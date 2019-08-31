@@ -1,0 +1,36 @@
+div.navy {
+  background-color: #8d2a90;
+  position: fixed;
+  line-height: 6rem;
+  font-size: 1.3rem;
+  text-align: center;
+  top: 0;
+  margin: 0;
+  width: 99%;
+  border-bottom: 0px solid;
+  z-index: 10;
+}
+
+.navy a:hover {
+  text-shadow: 3px 3px black;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
+
+div a {
+  text-decoration: none;
+  color: white;
+  margin: 30px;
+}
+
+.container a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 130px;
+}

@@ -1,0 +1,53 @@
+<h1>Welcome {{ currentUser.user.name }}!</h1>
+<p>You're logged in</p>
+<form [formGroup]="catalogueForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="catalogueForm" class="container">
+    <label>Category</label>
+    <select formControlName="siteIds" class="selector" multiple>
+      <option *ngFor="let siteId of objectKeys(sites)" [ngValue]="siteId">{{
+        sites[siteId]
+      }}</option>
+    </select>
+  </div>
+  <div *ngIf="catalogueForm" class="container">
+    <label>Category</label>
+    <select formControlName="categoryIds" class="selector" multiple>
+      <option
+        *ngFor="let categoryId of objectKeys(categories)"
+        [ngValue]="categoryId"
+        >{{ categories[categoryId] }}</option
+      >
+    </select>
+  </div>
+  <div class="container">
+    <button type="submit">Search</button>
+    <button type="reset" (click)="revert()">
+      Cancel
+    </button>
+  </div>
+  <div class="container">
+    <ag-grid-angular
+      *ngIf="Catalogue"
+      style="width: 1200px; height: 1200px; align-content: center"
+      class="ag-theme-balham"
+      [pagination]="true"
+      [rowData]="Catalogue.filterResult"
+      [columnDefs]="columnDefs"
+      (rowClicked)="onRowClicked($event)"
+      (cellClicked)="onCellClicked($event)"
+      (selectionChanged)="onSelectionChanged($event)"
+    >
+    </ag-grid-angular>
+
+    <a [routerLink]="['/here-map']">Map</a>
+  </div>
+  <!-- <div class="map">
+    <h1>{{ title }}</h1>
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+  </div> -->
+
+  <!-- <here-map appId="0JK53jN7Faa5a5rF35Sz" appCode="SqWcup0F8jY3JHYYKD0NSw" lat="46.253" lng="20.14824" width="100%" height="835px"></here-map>
+  <div #map style="width: 1280px; height: 768px"></div> -->
+</form>

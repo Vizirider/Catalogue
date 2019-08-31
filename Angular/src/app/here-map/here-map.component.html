@@ -1,0 +1,11 @@
+<div style="padding: 10px 0">
+  <input
+    type="text"
+    placeholder="Search places..."
+    [(ngModel)]="query"
+    style="width: 10%;"
+  />
+  <button (click)="places(query)">Search</button>
+</div>
+
+<div #map [style.width]="width" [style.height]="height"></div>

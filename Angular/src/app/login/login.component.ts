@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthenticationService } from "../auth.service";
+import { AuthenticationService } from "../services/auth.service";
 
 @Component({
   selector: "app-login",
@@ -19,12 +19,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     localStorage.clear();
     this.loginForm = this.formBuilder.group({
-      email: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required]]
     });
   }
 
-  get f() {
+  public get f() {
     return this.loginForm.controls;
   }
 

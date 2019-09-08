@@ -33,12 +33,14 @@ export interface UserRequest {
 }
 
 export class User {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-  defaultSite: string;
-  token: string;
+  user: {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+    defaultSite: string;
+    token: string;
+  };
 }
 
 export interface CatalogueSearchParams {
@@ -47,13 +49,15 @@ export interface CatalogueSearchParams {
 }
 
 export class Catalogue {
-  address: string;
-  category_name: string;
-  description: string;
-  discount_rate: string;
-  seller: string;
-  site_name: string;
-  token: string;
+  filterResult: {
+    address: string;
+    category_name: string;
+    description: string;
+    discount_rate: string;
+    seller: string;
+    site_name: string;
+    url: string;
+  };
 }
 
 export const SITES = {
@@ -80,5 +84,11 @@ export const CATEGORIES = {
   13: "Színház, Mozi",
   14: "Sportegyesület",
   15: "Magánoktatás",
-  16: "Rendezvényszervezés"
+  16: "Rendezvényszervezés",
+  17: "Barkács, Háztartás, Szerszám"
+};
+
+export const RANGETYPES = {
+  1: "time",
+  2: "distance"
 };

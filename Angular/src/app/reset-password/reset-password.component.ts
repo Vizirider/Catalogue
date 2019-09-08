@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthenticationService } from "../auth.service";
+import { AuthenticationService } from "../services/auth.service";
 
 @Component({
   selector: "app-reset-password",

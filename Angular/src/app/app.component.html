@@ -1,11 +1,21 @@
 <router-outlet>
-  <div class="navy">
-    <a [routerLink]="['/login']">Login</a>
-    <a [routerLink]="['/register']">Register</a>
-    <a [routerLink]="['/user']">User</a>
-    <a [routerLink]="['/catalogue']">Catalogue</a>
-  </div>
-  <div class="container">
-    <a [routerLink]="['/']"><img src="../assets/itsh_logo.png"/></a>
-  </div>
-</router-outlet>
+  <div class="navbar">
+      <a [routerLink]="['/login']" *ngIf="!isLoggedIn">Login</a>
+      <a [routerLink]="['/register']" *ngIf="!isLoggedIn">Register</a>
+      <div class="dropdown" *ngIf="isLoggedIn">
+        <button class="dropbtn">Tools 
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a [routerLink]="['/catalogue']">Catalogue</a>
+            <a href="https://azgard.itsh-external.hu/" target="_blank">AzgardLite</a>
+            <a href="https://itsh.process-solutions.hu/" target="_blank">Nexon</a>
+        </div> 
+      </div>
+      <a style="float:right" *ngIf="isLoggedIn" (click)="onLogout()">Logout</a>
+      <a style="float:right" [routerLink]="['/user']" *ngIf="isLoggedIn">User</a> 
+    </div>
+    <div class="container">
+      <a [routerLink]="['/']"><img src="../assets/itsh_logo.png"/></a>
+    </div>
+  </router-outlet>

@@ -2828,3 +2828,10 @@ roadnumber {
 .tomtom-copyrights {
   z-index: 9999;
 } */
+#map {
+  display: block;
+  width: 95%;
+  margin-bottom: 3px;
+  height: 1200px;
+  background: grey;
+}

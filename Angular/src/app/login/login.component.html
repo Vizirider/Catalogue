@@ -7,8 +7,16 @@
       class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
     />
-    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-      <div *ngIf="f.email.errors.required">Email is required</div>
+    <div
+      *ngIf="submitted && loginForm.controls['email'].errors"
+      class="invalid-feedback"
+    >
+      <div *ngIf="loginForm.controls['email'].errors.required">
+        Email is required
+      </div>
+      <div *ngIf="loginForm.controls['email'].errors.email">
+        Email must be a valid email address
+      </div>
     </div>
   </div>
 
@@ -20,8 +28,13 @@
       class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
     />
-    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-      <div *ngIf="f.password.errors.required">Password is required</div>
+    <div
+      *ngIf="submitted && loginForm.controls['password'].errors"
+      class="invalid-feedback"
+    >
+      <div *ngIf="loginForm.controls['password'].errors.required">
+        Password is required
+      </div>
     </div>
     <br />
     <a [routerLink]="['/reset-password']">Forgot Password</a>
@@ -29,6 +42,6 @@
 
   <div class="container">
     <button type="submit"><a [routerLink]="['/user']"></a>Login</button>
-    <button type="reset" (click)="revert()">Cancel</button>
+    <button type="reset">Cancel</button>
   </div>
 </form>

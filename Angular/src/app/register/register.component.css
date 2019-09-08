@@ -20,6 +20,10 @@ select {
   border-top: #8d2a90 solid 2px;
   border-left: #8d2a90 solid 2px;
 }
+option:hover{
+  background-color: #8d2a90;
+  color: white;
+}
 
 .container {
   position: relative;

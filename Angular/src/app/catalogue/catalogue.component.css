@@ -14,6 +14,7 @@ button:hover {
   background-color: #8d2a90;
   color: white;
 }
+
 input,
 select {
   border-radius: 4px;
@@ -21,15 +22,17 @@ select {
   border-left: #8d2a90 solid 2px;
 }
 
+option:hover {
+  background-color: #8d2a90;
+  color: white;
+}
+
 .container,
 .ag-grid-angular,
 h1,
 p {
-  position: relative;
   text-align: center;
   margin: 2.5rem;
-  display: -ms-flexbox;
-  display: flexbox;
 }
 
 label {
@@ -39,6 +42,7 @@ label {
   font-size: 17px;
   font-weight: bold;
 }
+
 .field-icon {
   float: right;
   margin-left: -25px;
@@ -46,6 +50,17 @@ label {
   position: relative;
   z-index: 2;
 }
+
 agm-map {
   height: 300px;
+}
+
+ag-grid-angular {
+  width: 1200px;
+  height: 1200px;
+  align-content: center;
+}
+
+.map {
+align-content: center;
 }

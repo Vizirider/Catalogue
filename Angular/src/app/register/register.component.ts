@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { AuthenticationService } from "../auth.service";
+import { AuthenticationService } from "../services/auth.service";
+import { SITES } from "./../models/models"
 
 @Component({
   selector: "app-register",
@@ -11,6 +12,9 @@ export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({});
   submitted = false;
 
+  keys = Object.keys;
+  sites = SITES;
+  
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService
@@ -30,15 +34,24 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
+    
 
-    if (this.registerForm.invalid) {
-      alert("Missing input! \n");
+    if (!this.registerForm.controls["name"].value){
+      alert("Missing name! \n");
       return;
+    }else if(!this.registerForm.controls["email"].value){
+      alert("Email's required! \n");
+    }else if(!this.registerForm.controls["password"].value){
+      alert("Missing password \n");
+    }else if(!this.registerForm.controls["defaultSite"].value){
+      alert("Choose your default site!! \n");
+    }else{
+      alert("Success registration! \n");
+      this.authenticationService.register(this.registerForm.value);
+      this.submitted = true;
     }
 
     // Do useful stuff with the gathered data
-    alert("Success registration! \n");
-    this.authenticationService.register(this.registerForm.value);
+
   }
 }

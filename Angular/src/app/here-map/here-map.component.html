@@ -1,11 +1,11 @@
-<div style="padding: 10px 0">
-  <input
-    type="text"
-    placeholder="Search places..."
-    [(ngModel)]="query"
-    style="width: 10%;"
-  />
-  <button (click)="places(query)">Search</button>
+<div style="padding-bottom: 20px">
+  <div>
+      <label class="searchLabel">Address</label>
+      <input type="text" [(ngModel)]="start" />
+      <label class="searchLabel" style="margin-left: 10px">Range (m)</label>
+      <input type="text" [(ngModel)]="range" style="margin-left: 10px" />
+      <button (click)="route(start, range)" style="margin-left: 5px">Search</button>
+  </div>
 </div>
 
 <div #map [style.width]="width" [style.height]="height"></div>

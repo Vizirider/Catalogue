@@ -1,19 +1,17 @@
-<h1>Welcome {{ currentUser.user.name }}!</h1>
-<p>You're logged in</p>
-<form [formGroup]="catalogueForm" (ngSubmit)="onSubmit()">
-  <div *ngIf="catalogueForm" class="container">
-    <label>Category</label>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div *ngIf="form" class="container">
+    <label>Site</label>
     <select formControlName="siteIds" class="selector" multiple>
-      <option *ngFor="let siteId of objectKeys(sites)" [ngValue]="siteId">{{
+      <option *ngFor="let siteId of keys(sites)" [ngValue]="siteId">{{
         sites[siteId]
       }}</option>
     </select>
   </div>
-  <div *ngIf="catalogueForm" class="container">
+  <div *ngIf="form" class="container">
     <label>Category</label>
     <select formControlName="categoryIds" class="selector" multiple>
       <option
-        *ngFor="let categoryId of objectKeys(categories)"
+        *ngFor="let categoryId of keys(categories)"
         [ngValue]="categoryId"
         >{{ categories[categoryId] }}</option
       >
@@ -21,33 +19,27 @@
   </div>
   <div class="container">
     <button type="submit">Search</button>
-    <button type="reset" (click)="revert()">
-      Cancel
+    <button type="reset" (click)="onRevert()">
+      Clear
     </button>
   </div>
   <div class="container">
     <ag-grid-angular
-      *ngIf="Catalogue"
-      style="width: 1200px; height: 1200px; align-content: center"
-      class="ag-theme-balham"
+      *ngIf="catalogue"
+      style="width: auto; height: 100%"
+      class="ag-theme-balham "
       [pagination]="true"
-      [rowData]="Catalogue.filterResult"
+      [rowData]="catalogue.filterResult"
       [columnDefs]="columnDefs"
-      (rowClicked)="onRowClicked($event)"
-      (cellClicked)="onCellClicked($event)"
-      (selectionChanged)="onSelectionChanged($event)"
+      domLayout="autoHeight"
+      (gridReady)="onGridReady($event)"
+      (firstDataRendered)="onFirstDataRendered($event)"
+      (rowClicked)='onRowClicked($event)'
     >
     </ag-grid-angular>
-
     <a [routerLink]="['/here-map']">Map</a>
   </div>
-  <!-- <div class="map">
-    <h1>{{ title }}</h1>
-    <agm-map [latitude]="lat" [longitude]="lng">
-      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-    </agm-map>
-  </div> -->
-
-  <!-- <here-map appId="0JK53jN7Faa5a5rF35Sz" appCode="SqWcup0F8jY3JHYYKD0NSw" lat="46.253" lng="20.14824" width="100%" height="835px"></here-map>
-  <div #map style="width: 1280px; height: 768px"></div> -->
+  <div #map [style.width]="width" [style.height]="height"
+  [style.align]="center"></div>
 </form>
+ 
